@@ -1,5 +1,5 @@
 <?php
-    require "includes/dbh.inc.php";
+    require "../includes/dbh.inc.php";
     require "header.php";
 ?>
 
@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="column logo-column">
-                <img src="img/logo.png" alt="lawLogo" width="100" height="100">
+                <img src="../img/logo.png" alt="lawLogo" width="100" height="100">
             </div>
             <div class="column title-column">
                 <div>
@@ -80,79 +80,43 @@
         <!--<button class="btn-menu-mobile">Menu</button>-->
     </nav>
     <div class="img">
-        <img src="img/blueBooksV2.jpg" alt="resposiveImage">
+        <img src="../img/blueBooksV2.jpg" alt="resposiveImage">
     </div>
     <div class="break"></div>
     <div class="container">
         <div class="row">
             <div class="column column-6 siteContent">
-                <h3>O nama</h3>
+                <h3>Postani član</h3>
                 <br>
                 <p>
-                    Međunarodni institut za pravne znanosti i praksu (International
-                    Institute of Legal Science and Jurisprudence) je Institut sa sjedištem
-                    u Zagrebu u Hotelu Westin, I. Kršnjavoga 1, koji okuplja pravne
-                    znanstvenike i praktičare iz brojnih zemalja, a koji je osnovan u
-                    cilju promicanja, razvitka i unapređenja pravne znanosti i prakse
-                    radi povezivanja znanstvenika i praktičara, izdavanja znanstvenih i
-                    stručnih publikacija, popularizacije pravne znanosti i povezivanja s
-                    praktičarima, umrežavanja i međunarodne znanstvene i stručne suradnje.
+                    Članom Instituta (koji okuplja redovite, pridružene i počasne članove)
+                    može postati svaka fizička (punoljetna i poslovno sposobna) te pravna
+                    osoba koja prihvaća ciljeve radi kojih je Institut osnovan, sukladno
+                    zakonu i statutu Instituta.                                    
                 </p>
-                <p>
-                                                        
-                </p>
-                <!--<a href="pages/members.html">Za više informacija kliknite ovdje...</a>-->
+                <br>
+                <p></p>
             </div>
 
-            <div class="column column-gap"></div>
+            <div class="column-gap"></div>
 
             <div class="column column-6 siteContent">
-                <h3>Osnovne djelatnosi instituta</h3>
+                <h3><br></h3>
                 <br>
                 <p>
-                    Osnovne djelatnosti Instituta su organiziranje predavanja, treninga,
-                    radionica, seminara, savjetovanja, domaćih i međunarodnih znanstvenih
-                    te znanstvenostručnih skupova, škola, kongresa, kao i izdavaštvo te
-                    suradnja s državnim tijelima u pripremi propisa.                                    
+                    Članstvo se stječe uplatom članarine koja iznosi 300 kn za fizičke osobe i 1000 kn za pravne osobe (do 4 člana iz pravne osobe). 
                 </p>
-                <p></p>
             </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="column column-6">
-                <h3>Sudačka praksa na zahtijev</h3>
-                <p>Ukoliko ste zainteresirani za sudačku praksu ili imate bilo kakvih pitanja slobodno nam se javite te ćemo vam dogovoriti u najkraćem roku.</p>
-                <p></p>
+            <div class="column column-6 siteContent">
+                <p>
+                    Za detaljnije informacije o postupku uplate i stjecanja članstva obratite nam se na e-mail: legal@iilsj.com
+                </p>
+            </div>
 
-                <div>
-                    <div>
-                    <form action="contactForm.php" method="post">
-                        <input type="text" name="name" id="name" placeholder="Ime i prezime..."><br><br>
-                        <input type="text" name="email" id="email" placeholder="Email adresa..."><br><br>
-                        <input type="text" name="subject" id="subject" placeholder="Tema..."><br><br>
+            <div class="column-gap"></div>
 
-
-                        <textarea id="editor" class="ckeditor" name="editor" placeholder="Sadržaj emaila..."></textarea><br><br>
-                        <script src="ckeditor/ckeditor.js"></script>
-                        <script>
-                            ClassicEditor
-                                .create( document.querySelector( '#editor' ), {
-                                    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-                                } )
-                                .then( editor => {
-                                    window.editor = editor;
-                                } )
-                                .catch( err => {
-                                    console.error( err.stack );
-                                } );
-                        </script>
-                        <button type="submit" name="ckeditor-submit">Pošalji</button><br><br><br>
-                    </form>
-                    </div> 
-                </div>
+            <div class="column column-6 siteContent">
+                <p>IBAN: HR7024840081135115690 <br> SWIFT: RZBHHR2X</p>
             </div>
         </div>
     </div>

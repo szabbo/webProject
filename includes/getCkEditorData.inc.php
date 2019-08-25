@@ -11,7 +11,7 @@
         $query = mysqli_query($conn, $sql);
 
         if ($query) {
-            header("Location: ../notifications.php");
+            header("Location: ../pages/notifications.php");
             exit();
         } else {
             echo "error while adding to db!";

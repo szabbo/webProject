@@ -1,5 +1,5 @@
 <?php
-    require "includes/dbh.inc.php";
+    require "../includes/dbh.inc.php";
     require "header.php";
 ?>
 
@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="column logo-column">
-                <img src="img/logo.png" alt="lawLogo" width="100" height="100">
+                <img src="../img/logo.png" alt="lawLogo" width="100" height="100">
             </div>
             <div class="column title-column">
                 <div>
@@ -22,12 +22,12 @@
         <ul class="nav-wrapper">
             <li class="nav-item">
                 <div class="nav-dropdown">
-                    <a class="dropbtn" href="main.php">Početna</a>
+                    <a class="dropbtn" href="notifications.php">Obavijesti</a>
                 </div>
             </li>
             <li class="nav-item">
                 <div class="nav-dropdown">
-                    <a class="dropbtn" href="showNotifications.php">Obavijesti</a>
+                    <a class="dropbtn" href="editMembers.php">Članovi</a>
                     <!--<div class="nav-dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -35,26 +35,16 @@
                     </div>-->
                 </div>
             </li>
-            <li class="nav-item">
-                <div class="nav-dropdown">
-                    <a class="dropbtn" href="member.php">Postani član</a>
-                    <!--<div class="nav-dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>-->
-                </div>
-            </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <div class="nav-dropdown">
                     <!--<button class="dropbtn">Aktivnosti</button>-->
-                    <a class="dropbtn" href="contactUs.php">Kontakt</a>
+                    <!--<a class="dropbtn" href="contactUs.php">Kontakt</a>
                     <!--<div class="nav-dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
                         <a href="#">Link 3</a>
                     </div>-->
-                </div>
+                <!--</div>
             </li>
             <li class="nav-item">
                 <div class="nav-dropdown">
@@ -64,11 +54,12 @@
                         <a href="#">Link 2</a>
                         <a href="#">Link 3</a>
                     </div>-->
-                </div>
-            </li>
+                <!--</div>
+            </li>-->
             <li class="nav-item">
                 <div class="nav-dropdown">
-                    <a class="dropbtn" href="login.php">Login</a>
+                <!-- tu ide logout-->
+                    <a class="dropbtn" href="../includes/logout.inc.php">Logout</a>
                     <!--<div class="nav-dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -84,43 +75,47 @@
     </div>
     <div class="break"></div>
     <div class="container">
-        <div class="row">
-            <div class="column column-6 siteContent">
-                <h3>Postani član</h3>
-                <br>
-                <p>
-                    Članom Instituta (koji okuplja redovite, pridružene i počasne članove)
-                    može postati svaka fizička (punoljetna i poslovno sposobna) te pravna
-                    osoba koja prihvaća ciljeve radi kojih je Institut osnovan, sukladno
-                    zakonu i statutu Instituta.                                    
-                </p>
-                <br>
-                <p></p>
-            </div>
+        <div id="createNewPost">
 
-            <div class="column-gap"></div>
+        <form action="../includes/getCkEditorData.inc.php" method="post" class="txtEditor">
+            <textarea id="editor" class="ckeditor" name="editor"></textarea><br><br>
+            <script src="ckeditor/ckeditor.js"></script>
+            <script>
+                ClassicEditor
+                    .create( document.querySelector( '#editor' ), {
+                        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+                    } )
+                    .then( editor => {
+                        window.editor = editor;
+                    } )
+                    .catch( err => {
+                        console.error( err.stack );
+                    } );
+            </script>
+            <button type="submit" name="ckeditor-submit">Spremi objavu</button><br><br>
+        </form>
 
-            <div class="column column-6 siteContent">
-                <h3><br></h3>
-                <br>
-                <p>
-                    Članstvo se stječe uplatom članarine koja iznosi 300 kn za fizičke osobe i 1000 kn za pravne osobe (do 4 člana iz pravne osobe). 
-                </p>
-            </div>
-            <div class="column column-6 siteContent">
-                <p>
-                    Za detaljnije informacije o postupku uplate i stjecanja članstva obratite nam se na e-mail: legal@iilsj.com
-                </p>
-            </div>
+        <form action="../includes/retriveDataCkE.inc.php" method="post">
+            <table border = 1 cellpadding = 1 cellspacing = 1>
+                <tr>
+                    <th>Content</th>
+                </tr>
+                <?php
+                    $sql = "SELECT * FROM notifications ORDER by 1 DESC";
+                    $result = mysqli_query($conn, $sql);
 
-            <div class="column-gap"></div>
-
-            <div class="column column-6 siteContent">
-                <p>IBAN: HR7024840081135115690 <br> SWIFT: RZBHHR2X</p>
-            </div>
-        </div>
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        echo "<td>".$row['notificationContent']."</td>";
+                        echo "<td><a class='functionBtn' href=../includes/deleteNotification.inc.php?id=".$row['notificationId'].">Obriši</a></td>";
+                        echo "<td><a class='functionBtn' href=editNotifications.php?id=".$row['notificationId'].">Uredi</a></td>";
+                    }
+                ?>
+            </table>
+        </form>
+        
+        </div>     
     </div>
-</div>
 
 <?php
     require "footer.php";

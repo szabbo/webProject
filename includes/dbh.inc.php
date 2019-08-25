@@ -1,5 +1,10 @@
 <?php
 
+    //$servername = "localhost";
+    //$dbUsername = "wwwinter_udrugaD";
+    //$dbPassword = "P]SI.vuSWC${";
+    //$dbName = "wwwinter_udruga";
+
     $servername = "localhost";
     $dbUsername = "root";
     $dbPassword = "";

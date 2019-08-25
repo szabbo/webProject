@@ -7,14 +7,14 @@
         $pass = $_POST['userPassword'];
 
         if (empty($email) || empty($pass)) {
-            header("Location: ../login.php?error=emotyFields");
+            header("Location: ../pages/login.php?error=emotyFields");
             exit();
         } else {
             $sql = "SELECT * FROM users WHERE username=? OR userEmail=?";
             $stmt = mysqli_stmt_init($conn);
 
             if (!mysqli_stmt_prepare($stmt, $sql)) {
-                header("Location: ../login.php?error=sqlError");
+                header("Location: ../pages/login.php?error=sqlError");
                 exit();
             } else {
                 mysqli_stmt_bind_param($stmt, "ss", $email, $email);
@@ -26,7 +26,7 @@
                     $passCheck = password_verify($pass, $row['userPassword']);
 
                     if ($passCheck == false) {
-                        header("Location: ../login.php?error=wrongPassword");
+                        header("Location: ../pages/login.php?error=wrongPassword");
                         exit();
                     }
                     elseif ($passCheck == true) {
@@ -38,7 +38,7 @@
                             $_SESSION['username'] = $row[username];
                             $_SESSION['userEmail'] = $row[userEmail];
 
-                            header("Location: ../notificationsNA.php?login=success");
+                            header("Location: ../pages/notificationsNA.php?login=success");
                             exit();
                         } else {
                             session_start();
@@ -47,7 +47,7 @@
                             $_SESSION['username'] = $row[username];
                             $_SESSION['userEmail'] = $row[userEmail];
 
-                            header("Location: ../notifications.php?login=success");
+                            header("Location: ../pages/notifications.php?login=success");
                             exit();
                         }
 

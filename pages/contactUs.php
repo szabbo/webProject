@@ -1,17 +1,17 @@
 <?php
-    require "includes/dbh.inc.php";
-    require "indexHeader.php";
+    require "../includes/dbh.inc.php";
+    require "header.php";
 ?>
 
 <div class="page">
     <div class="container">
         <div class="row">
             <div class="column logo-column">
-                <img src="img/logo.png" alt="lawLogo" width="100" height="100">
+                <img src="../img/logo.png" alt="lawLogo" width="100" height="100">
             </div>
             <div class="column title-column">
                 <div>
-                    <h1 class="title">International Institute of Legal Science and Jurisprudence</h1>
+                    <h1 class="title">Međunarodni institut za pravne znanosti i praksu</h1>
                     <!--<p class="underTheTitle">Možda nekakav moto ili slogan</p>-->
                 </div>
             </div>
@@ -22,7 +22,7 @@
         <ul class="nav-wrapper">
             <li class="nav-item">
                 <div class="nav-dropdown">
-                    <a class="dropbtn" href="main.php">Početna</a>
+                    <a class="dropbtn" href="index.php">Početna</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -70,7 +70,7 @@
                 <div class="nav-dropdown">
                     <?php
                         if (isset($_SESSION['userId'])) {
-                            echo '<a class="dropbtn" href="includes/logout.inc.php">Logout</a>';
+                            echo '<a class="dropbtn" href="../includes/logout.inc.php">Logout</a>';
                         } else {
                             echo '<a class="dropbtn" href="login.php">Login</a>';
                         }
@@ -86,18 +86,31 @@
         <!--<button class="btn-menu-mobile">Menu</button>-->
     </nav>
     <div class="img">
-        <img src="img/blueBooksV2.jpg" alt="resposiveImage">
+        <img src="../img/blueBooksV2.jpg" alt="resposiveImage">
     </div>
     <div class="break"></div>
     <div class="container">
-        <div id="loginForm">
-            <form action="includes/login.inc.php" method="post">
-                <!--nameovi se koriste za čupanje podataka-->
-                <input type="text" name="userEmail" placeholder="Email..."><br><br>
-                <input type="password" name="userPassword" placeholder="Password..."><br><br>
-                <button type="submit" name="login-submit">Login</button><br>
-            </form>
-        </div>     
+        <div class="row">
+            <div class="column column-6 siteContent">
+                <h3>Adresa</h3>
+                <br>
+                <p>
+                    The Westin Hotel <br>
+                    Izidora Kršnjavog 1 <br>
+                    10 000 Zagreb <br>
+                    Hrvatska
+                </p>
+                <br>
+                <p></p>
+            </div>
+            <div class="column column-6 siteContent">
+                <h3>Online</h3>
+                <br>
+                <p>E-mail: legal@iilsj.com</p>
+                <p>Facebook: International institute of legal science and jurisprudence</p>
+                <p>Broj telefona: +385 99 7400 749</p>
+            </div>
+        </div>
     </div>
 </div>
 

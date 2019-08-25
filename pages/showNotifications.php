@@ -1,5 +1,5 @@
 <?php
-    require "includes/dbh.inc.php";
+    require "../includes/dbh.inc.php";
     require "header.php";
 ?>
 
@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="column logo-column">
-                <img src="img/logo.png" alt="lawLogo" width="100" height="100">
+                <img src="../img/logo.png" alt="lawLogo" width="100" height="100">
             </div>
             <div class="column title-column">
                 <div>
@@ -22,12 +22,12 @@
         <ul class="nav-wrapper">
             <li class="nav-item">
                 <div class="nav-dropdown">
-                    <a class="dropbtn" href="notifications.php">Obavijesti</a>
+                    <a class="dropbtn" href="main.php">Početna</a>
                 </div>
             </li>
             <li class="nav-item">
                 <div class="nav-dropdown">
-                    <a class="dropbtn" href="editMembers.php">Članovi</a>
+                    <a class="dropbtn" href="showNotifications.php">Obavijesti</a>
                     <!--<div class="nav-dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -35,16 +35,26 @@
                     </div>-->
                 </div>
             </li>
-            <!--<li class="nav-item">
+            <li class="nav-item">
                 <div class="nav-dropdown">
-                    <!--<button class="dropbtn">Aktivnosti</button>-->
-                    <!--<a class="dropbtn" href="contactUs.php">Kontakt</a>
+                    <a class="dropbtn" href="member.php">Postani član</a>
                     <!--<div class="nav-dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
                         <a href="#">Link 3</a>
                     </div>-->
-                <!--</div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-dropdown">
+                    <!--<button class="dropbtn">Aktivnosti</button>-->
+                    <a class="dropbtn" href="contactUs.php">Kontakt</a>
+                    <!--<div class="nav-dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>-->
+                </div>
             </li>
             <li class="nav-item">
                 <div class="nav-dropdown">
@@ -54,12 +64,11 @@
                         <a href="#">Link 2</a>
                         <a href="#">Link 3</a>
                     </div>-->
-                <!--</div>
-            </li>-->
+                </div>
+            </li>
             <li class="nav-item">
                 <div class="nav-dropdown">
-                <!-- tu ide logout-->
-                    <a class="dropbtn" href="includes/logout.inc.php">Logout</a>
+                    <a class="dropbtn" href="login.php">Login</a>
                     <!--<div class="nav-dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -71,44 +80,32 @@
         <!--<button class="btn-menu-mobile">Menu</button>-->
     </nav>
     <div class="img">
-        <img src="img/blueBooksV2.jpg" alt="resposiveImage">
+        <img src="../img/blueBooksV2.jpg" alt="resposiveImage">
     </div>
-
     <div class="break"></div>
     <div class="container">
-        <div id="deleteUsers">
-            <form action="includes/delete.inc.php" method="post">
-                <table border = 1 cellpadding = 1 cellspacing = 1>
-                    <tr>
-                        <th>Ime</th>
-                        <th>Prezime</th>
-                        <th>Korisničko ime</th>
-                        <th>Email</th>
-                        <th>Administrator</th>
-                        <th>Kontakt broj</th>
-                        <th>Adresa</th>
-                    </tr>
-                    <?php
-                        $sql = "SELECT * FROM users";
-                        $result = mysqli_query($conn, $sql);
+        <div class="row">
+            <div class="showNotifications">
+                <form action="../includes/retriveDataCkE.inc.php" method="post">
+                    <table border = 1 cellpadding = 1 cellspacing = 1>
+                        <tr>
+                            <th>Obavijesti</th>
+                        </tr>
+                        <?php
+                            $sql = "SELECT * FROM notifications";
+                            $result = mysqli_query($conn, $sql);
 
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<tr>";
-                            echo "<td>".$row['userFirstName']."</td>";
-                            echo "<td>".$row['userLastName']."</td>";
-                            echo "<td>".$row['username']."</td>";
-                            echo "<td>".$row['userEmail']."</td>";
-                            echo "<td>".$row['isAdmin']."</td>";
-                            echo "<td>".$row['userPhoneNumber']."</td>";
-                            echo "<td>".$row['userAddress']."</td>";
-                        }
-                    ?>
-                </table>
-            </form>
-        </div>     
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo "<tr>";
+                                echo "<td>".$row['notificationContent']."</td>";
+                            }
+                        ?>
+                    </table>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div class="break"></div>
+</div>
 
 <?php
     require "footer.php";

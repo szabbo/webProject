@@ -1,5 +1,5 @@
 <?php
-    require "includes/dbh.inc.php";
+    require "../includes/dbh.inc.php";
     require "header.php";
     // include("includes/editNotifications.inc.php");
 ?>
@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="column logo-column">
-                <img src="img/logo.png" alt="lawLogo" width="100" height="100">
+                <img src="../img/logo.png" alt="lawLogo" width="100" height="100">
             </div>
             <div class="column title-column">
                 <div>
@@ -60,7 +60,7 @@
             <li class="nav-item">
                 <div class="nav-dropdown">
                 <!-- tu ide logout-->
-                    <a class="dropbtn" href="includes/logout.inc.php">Logout</a>
+                    <a class="dropbtn" href="../includes/logout.inc.php">Logout</a>
                     <!--<div class="nav-dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -72,7 +72,7 @@
         <!--<button class="btn-menu-mobile">Menu</button>-->
     </nav>
     <div class="img">
-        <img src="img/blueBooksV2.jpg" alt="resposiveImage">
+        <img src="../img/blueBooksV2.jpg" alt="resposiveImage">
     </div>
     <div class="break"></div>
     <div class="container">
